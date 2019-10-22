@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { green } from '@material-ui/core/colors';
 import { Button } from '@material-ui/core';
@@ -52,14 +52,12 @@ const styles = () => ({
 })
 
 const LandingNav = ( props ) => {
-    const { user, classes } = props;
-
+    const { session, classes } = props;
     return (
         <Nav>
             <Button to='/' > 
                 {/* <Logo src='/images/logovar.jpg'/>  */}
             </Button>
-
             <NavLinks>
                 <Button 
                     className = { classes.textLink } 
@@ -87,11 +85,10 @@ const LandingNav = ( props ) => {
                     size='large' 
                     variant='outlined'
                     color='secondary'
-                    onClick = { user.authed ?  props.signOut : props.signIn }
-                    > { user.authed ? 'Logout' : 'Login'} 
+                    onClick = { session.isUserSignedIn() ? props.signOut : props.signIn }
+                    > { session.isUserSignedIn() ? 'Logout' : 'Login' } 
                 </Button>
             </NavLinks>
-
         </Nav>
     )
 }

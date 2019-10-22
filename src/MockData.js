@@ -1,5 +1,100 @@
-var faker = require('faker');
+var faker = require( 'faker' );
 
+
+
+export let topics = [
+    {
+        title: 'Misconceptions'
+    },
+    {
+        title: 'Art'
+    },
+    {
+        title: 'Artificial Intelligence'
+    },
+    {
+        title: 'Psychology'
+    },
+    {
+        title: 'Software Engineering'
+    },
+    {
+        title: 'Physics'
+    },
+    {
+        title: 'Philosophy'
+    },
+    {
+        title: 'History'
+    },
+    {
+        title: 'Comedy'
+    },
+    {
+        title: 'Music'
+    },
+    {
+        title: 'Conspiracy'
+    },
+    {
+        title: 'Politics'
+    },
+    {
+        title: 'Economics'
+    },
+    {
+        title: faker.commerce.department()
+    },
+    {
+        title: faker.commerce.department()
+    },
+    {
+        title: faker.commerce.department()
+    },
+    {
+        title: faker.commerce.department()
+    },
+    {
+        title: faker.commerce.department()
+    },
+    {
+        title: faker.commerce.department()
+    },
+    {
+        title: faker.commerce.department()
+    },
+    {
+        title: faker.commerce.department()
+    },
+    {
+        title: faker.commerce.department()
+    },
+    {
+        title: faker.commerce.department()
+    },
+    {
+        title: faker.commerce.department()
+    },
+    {
+        title: faker.commerce.department()
+    },
+    {
+        title: faker.commerce.department()
+    },
+    {
+        title: faker.commerce.department()
+    },
+    {
+        title: faker.commerce.department()
+    },
+    {
+        title: faker.commerce.department()
+    },
+
+    {
+        title: faker.commerce.department()    
+    },
+];
 
 export let notifications = [
     {

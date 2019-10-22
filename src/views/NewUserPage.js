@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import SearchTab from '../components/SearchTab';
-import { Person } from 'blockstack';
+import { topics } from '../MockData.js';
   
 // import { Breadcrumbs } from '@material-ui/core';
 // import { styled  as muiStyle } from '@material-ui/styles';
 // import { Button, Paper } from '@material-ui/core';
 
-const avatarFallbackImage = 'https://s3.amazonaws.com/onename/avatar-placeholder.png';
 
 const Wrapper = styled.div`{
     display: flex;
@@ -17,24 +16,17 @@ const Wrapper = styled.div`{
 
 const Left = styled.div`
     display: flex;
-    width: 48vw;
+    width: 35vw;
     margin-top: 20px;
     background-color: white;
-    justify-content: space-between;
-    // border: solid silver 1.5px;
+    justify-content: space-around;
     border-radius: 15px;
-    border-left: none;
     padding: 1%;
-    border-right: none;
     align-items: center;
-    // background-color: whitesmoke;
-    // border: none;
     box-shadow: 2px 2px 3px 3px rgba(0,0,0,0.10);
 `
 
 const Right = styled( Left )`{
-    border-right: none;
-    border-left: none;
 }`
 
 const Header = styled.h2`{
@@ -54,8 +46,8 @@ const Div = styled.div`
 
 const Bottom = styled( Div )`{
     // height: 52px;
-    background-color: #70607c;
-    background-color: whitesmoke;
+    // background-color: #70607c;
+    // background-color: whitesmoke;
 }`
 
 const WelcomeMessage = styled.p`{
@@ -88,53 +80,42 @@ const NextButton = styled.button`{
 
 
 const NewUserPage = ( props ) => {
+    const { data, session } = props;
 
-    const [ authed, setAuthed ] = useState( false );
-    const [ person, setPerson ] = useState( 
-        { name: 'anonymous', avatarUrl: avatarFallbackImage } 
-    );
-
-    const { userSession } = props;
-
-    useEffect( ( userSession ) => {
-        try {
-            setPerson( { person: new Person( userSession.loadUserData().profile ) } );
-            setAuthed( true );
-        }
-        catch {
-            setAuthed( false );
-        }
-    }, []);
-
+    // const avatarFallbackImage = 'https://s3.amazonaws.com/onename/avatar-placeholder.png';
 
     return (
         <Div>
-            { ! userSession.isSignInPending() &&
+            { ( session.isUserSignedIn() && data ) &&
                 <Div>
                     <Div>
                         <Header> 
-                            Welcome, { person.name || 'Yanna' }! Thanks for trying Nuancity. 
+                            Welcome, { data.profile.name || 'Yanna' }! Thanks for trying Nuancity. 
                         </Header>
                         <WelcomeMessage> To get started, choose at least <span style = {{
                             fontSize: '25px',
                             color: 'purple'
                         }}> 5 </span> areas that interest you </WelcomeMessage>
                     </Div>
-        
                     <Wrapper>
                         <Left>
-                            <SearchTab color = 'primary' count = { 6 } />
-                            <SearchTab color = 'red' count = { 3 } />
-                            <SearchTab color = 'secondary' count = { 5 } />
+                            <SearchTab list = { topics.slice( 0, 6 ) } color = 'primary' count = { 6 } />
+                            <SearchTab list = { topics.slice( 6, 9 ) } splice =  '6:3' color = 'red' count = { 3 } />
+                            <SearchTab list = { topics.slice( 9, 14 ) } splice = '9:5' color = 'secondary' count = { 5 } />
                         </Left>
                         <Right>
-                            <SearchTab color = 'green' count = { 4 } />
-                            <SearchTab color = 'purple' count = { 7 } />
-                            <SearchTab color = 'blue' count = { 6 } />
+                            <SearchTab list = { topics.slice( 14, 18 ) } color = 'green' count = { 4 } />
+                            <SearchTab list = { topics.slice( 18, 25 ) } color = 'purple' count = { 7 } />
+                            <SearchTab list = { topics.slice( 25, 30 ) } color = 'blue' count = { 6 } />
                         </Right>
                     </Wrapper>
                     <Bottom>
-                        <NextButton color='red' variant='outlined' size='large' > Next <i style={{ fontSize: '2rem'}} class="far fa-long-arrow-right"></i>
+                        <NextButton
+                        > Next 
+                            <i
+                                style = { { fontSize: '1.7rem' } } 
+                                class = "far fa-long-arrow-right"
+                            />
                         </NextButton>
                     </Bottom>
                 </Div>

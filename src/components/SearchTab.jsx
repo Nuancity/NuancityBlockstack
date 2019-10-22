@@ -2,36 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import { Button } from '@material-ui/core';
 import { styled  as styledm } from '@material-ui/styles';
-// import { engineering } from '../MockData.js';
 
-const Wrapper = styled.div`{
-    width: ${ props => props.width || '20vw' } 
+const Wrapper = styled.ul`{
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
     background-color: white;
-    // background-color: whitesmoke;
+    align-items: center;
 }`
 
-const List = styled.ul`{
-    // border: solid silver 1px;
-    display: flex;
-    // flex-direction: column;
-    height: 100%;
-    align-items: space-around;
-    display: flex;
-    flex-direction: column;
-}`
-
-const getButtons = ( cnt ) => {
-    let buttons = [];
-    while ( cnt > 0 ) {
-        buttons.push( cnt );
-        cnt --;
-    }
-    return buttons;
-}
 const colors = {
     'red' : '#ffebee',
     'green' : '#e8f5e9',
@@ -57,30 +35,25 @@ const SearchTab = ( props ) => {
         // border: 'none'
     });
 
-
-
+    const handleClick = ( e ) => {
+        e.preventDefault();
+        console.log( e.target.textContent );
+    }
 
     return (
-        <Wrapper>
-            {
-                ( props.color === 'primary' || props.color === 'secondary' ) ?
-                <List>
-                    { getButtons( props.count ).map( topic => {
-                        return (
-                            <li> <CustomButton variant = { props.variant || 'outlined' } color = { props.color } > Abnormal Psychology   </CustomButton> </li>
-                        )
-                    })
-                    }
-                </List> 
-                :
-                <List>
-                    { getButtons( props.count ).map( num => {
-                        return (
-                            <li> <CustomButton color={ props.color } variant = { props.variant || 'outlined' } > Abnormal Psychology  </CustomButton> </li>
-                        )
-                    })
-                    }
-                </List>
+        <Wrapper >
+            { props.list.map( topic => {
+                return (
+                    <li> 
+                        <CustomButton 
+                            color = { props.color }
+                            onClick = { handleClick }
+                            variant = { props.variant || 'outlined' } 
+                            > { topic.title } 
+                        </CustomButton> 
+                    </li>
+                )
+            })
             }
         </Wrapper>
     )

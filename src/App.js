@@ -10,79 +10,60 @@ import { Route } from "react-router-dom";
 import { UserSession, AppConfig } from 'blockstack';
 import './App.css';
 
-const App = () => {
+const appConfig = new AppConfig( [ 'store_write', 'publish_data' ] );
+const userSession = new UserSession( { appConfig: appConfig } );
 
-  const appConfig = new AppConfig();
-  const userSession = new UserSession( { appConfig: appConfig } );
+const App =  () => {
 
-  const handleSignIn = ( e ) =>  {
+  const [ data, setData ] = useState( null );
+
+  const handleSignIn = ( e ) => {
     e.preventDefault();
     userSession.redirectToSignIn( 'http://localhost:3000/newUser' );
   }
 
   const handleSignOut = ( e ) => {
     e.preventDefault();
-    userSession.signUserOut( window.location.origin );
+    userSession.signUserOut(window.location.origin);
   }
 
-  const [ user, setUser ] = useState(
-    {
-      authed: false,
-      data: null
+  useEffect( () => {
+    if ( userSession.isSignInPending() && !userSession.isUserSignedIn() ) {
+      userSession.handlePendingSignIn().then( ( userData ) => {
+            setData( userData );
+        });
     }
-  );
+    if ( userSession.isUserSignedIn() ) {
+        setData( userSession.loadUserData() );
+    }
+  }, []);
 
-  useEffect( ( ) => {
-    if ( !userSession.isUserSignedIn() && userSession.isSignInPending() ) {
-      userSession.handlePendingSignIn().then( ( userData  ) => {
-        setUser( 
-          {
-            authed: true,
-            data: userData
-          } 
-      )})
-  }});
-
-    return (
-      <div className = "App" >
-        <Nav 
-          user = { user }
-          session = { userSession }
+  return (
+    <div className = "App" >
+      <Nav 
+        session = { userSession }
+        signIn = { handleSignIn } 
+        signOut = { handleSignOut } 
+      />
+      <Route 
+        path = '/newUser' 
+        component = { () => <NewUserPage 
           signIn = { handleSignIn } 
           signOut = { handleSignOut } 
-        />
-        <Route 
-          path = '/newUser' 
-          component = { () => <NewUserPage 
-            userSession = { userSession } 
-            handleSignOut = { handleSignOut } 
-            handleSignIn = { handleSignIn } 
-            />
-          }
-        />
-        <Route exact path='/' component={ Landing } />
-        <Route path='/topics' component={ Topics } />
-        <Route path='/topic' component={ TopicFeed } />
-        <Route path='/dashboard' component={ Dashboard } />
-        <Route path='/post' component={ SinglePost } />
-      </div>
-    );
-
+          session = { userSession }
+          data = { data }
+          />
+        }
+      />
+      <Route exact path='/' component={ Landing } />
+      <Route path='/topics' component={ Topics } />
+      <Route path='/topic' component={ TopicFeed } />
+      <Route path='/dashboard' component={ Dashboard } />
+      <Route path='/post' component={ SinglePost } />
+    </div>
+  );
 }
-
 
 export default App;
 
 
-// componentWillMount() {
-//   const session = this.userSession
-//   if(!session.isUserSignedIn() && session.isSignInPending()) {
-//     session.handlePendingSignIn()
-//     .then((userData) => {
-//       if(!userData.username) {
-//         throw new Error('This app requires a username.')
-//       }
-//       window.location = `/kingdom/${userData.username}`
-//     })
-//   }
-// }
