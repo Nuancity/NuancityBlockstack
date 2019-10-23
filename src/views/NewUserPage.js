@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import SearchTab from '../components/SearchTab';
 import { topics } from '../MockData.js';
@@ -73,7 +73,7 @@ const NextButton = styled.button`{
     font-size: 2.5rem;
     letter-spacing: 2px;
     background-color: whitesmoke;
-    border-bottom: solid purple 2px;
+    border: solid purple 2px;
     outline: none;
     border-radius: 5px;
 }`
@@ -81,12 +81,21 @@ const NextButton = styled.button`{
 
 const NewUserPage = ( props ) => {
     const { data, session } = props;
+    const [ userTopics, setUserTopics ] = useState( [] );
 
-    // const avatarFallbackImage = 'https://s3.amazonaws.com/onename/avatar-placeholder.png';
+
+    useEffect( ( ) => {
+        const options = { decrypt: false }
+        session.getFile('userTopics.json', options )
+        .then( ( file )  => {
+            var topic = JSON.parse(file || '[]')
+            setUserTopics( topic );
+        })
+    }, [ session ] ) 
 
     return (
         <Div>
-            { ( session.isUserSignedIn() && data ) &&
+            { ( session.isUserSignedIn() && data && !userTopics ) &&
                 <Div>
                     <Div>
                         <Header> 
@@ -99,14 +108,45 @@ const NewUserPage = ( props ) => {
                     </Div>
                     <Wrapper>
                         <Left>
-                            <SearchTab list = { topics.slice( 0, 6 ) } color = 'primary' count = { 6 } />
-                            <SearchTab list = { topics.slice( 6, 9 ) } splice =  '6:3' color = 'red' count = { 3 } />
-                            <SearchTab list = { topics.slice( 9, 14 ) } splice = '9:5' color = 'secondary' count = { 5 } />
+                            <SearchTab 
+                                list = { topics.slice( 0, 6 ) } 
+                                color = 'primary' 
+                                count = { 6 } 
+                                session = { session }
+                            />
+                            <SearchTab 
+                                list = { topics.slice( 6, 9 ) }
+                                splice =  '6:3' color = 'red' 
+                                count = { 3 }
+                                session = { session }
+                             />
+                            <SearchTab 
+                                list = { topics.slice( 9, 14 ) }
+                                splice = '9:5' 
+                                color = 'secondary' 
+                                count = { 5 }
+                                session = { session }
+                            />
                         </Left>
                         <Right>
-                            <SearchTab list = { topics.slice( 14, 18 ) } color = 'green' count = { 4 } />
-                            <SearchTab list = { topics.slice( 18, 25 ) } color = 'purple' count = { 7 } />
-                            <SearchTab list = { topics.slice( 25, 30 ) } color = 'blue' count = { 6 } />
+                            <SearchTab 
+                                list = { topics.slice( 14, 18 ) } 
+                                color = 'green' 
+                                count = { 4 } 
+                                session = { session }
+                            />
+                            <SearchTab 
+                                list = { topics.slice( 18, 25 ) }
+                                color = 'purple' 
+                                count = { 7 } 
+                                session = { session }
+                            />
+                            <SearchTab 
+                                list = { topics.slice( 25, 30 ) } 
+                                color = 'blue' 
+                                count = { 6 } 
+                                session = { session }
+                            />
                         </Right>
                     </Wrapper>
                     <Bottom>
@@ -115,11 +155,17 @@ const NewUserPage = ( props ) => {
                             <i
                                 style = { { fontSize: '1.7rem' } } 
                                 class = "far fa-long-arrow-right"
+                                onClick = { () => alert( 'click' ) }
                             />
                         </NextButton>
                     </Bottom>
                 </Div>
             }
+            <Div>
+                {
+                    userTopics && <h1> { userTopics } </h1>
+                }
+            </Div>
         </Div>
     )
 }

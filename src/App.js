@@ -13,8 +13,7 @@ import './App.css';
 const appConfig = new AppConfig( [ 'store_write', 'publish_data' ] );
 const userSession = new UserSession( { appConfig: appConfig } );
 
-const App =  () => {
-
+const App =  ( props ) => {
   const [ data, setData ] = useState( null );
 
   const handleSignIn = ( e ) => {
@@ -24,7 +23,7 @@ const App =  () => {
 
   const handleSignOut = ( e ) => {
     e.preventDefault();
-    userSession.signUserOut(window.location.origin);
+    userSession.signUserOut( window.location.origin );
   }
 
   useEffect( () => {
@@ -52,14 +51,35 @@ const App =  () => {
           signOut = { handleSignOut } 
           session = { userSession }
           data = { data }
+          history = { props }
           />
         }
       />
-      <Route exact path='/' component={ Landing } />
-      <Route path='/topics' component={ Topics } />
-      <Route path='/topic' component={ TopicFeed } />
-      <Route path='/dashboard' component={ Dashboard } />
-      <Route path='/post' component={ SinglePost } />
+      <Route 
+        exact path='/' 
+        component = { Landing } 
+        session = { userSession }
+      />
+      <Route 
+        path='/topics' 
+        component = { Topics } 
+        session = { userSession }
+      />
+      <Route 
+        path='/topic' 
+        component = { TopicFeed } 
+        session = { userSession }
+      />
+      <Route 
+        path='/dashboard' 
+        component = { Dashboard } 
+        session = { userSession }
+      />
+      <Route 
+        path='/post' 
+        component = { SinglePost } 
+        session = { userSession }
+      />
     </div>
   );
 }

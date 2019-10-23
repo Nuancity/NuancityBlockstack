@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import styled from 'styled-components';
 import { Button, Paper } from '@material-ui/core';
 import Post from '../components/Post.jsx';
@@ -7,6 +7,7 @@ import Node from '../components/Node.jsx';
 import Notification  from '../components/Notification';
 import { withStyles } from '@material-ui/styles';
 import { notifications, posts, peopleNetwork, resources } from '../MockData.js';
+import NewUserPage from './NewUserPage.js';
 
 var faker = require('faker');
 
@@ -109,8 +110,23 @@ const Mid = styled.div`{
     })
 
 const Dashboard = ( props ) => {
-    const { classes } = props;
+    const { classes, session, handleSignIn, handleSignOut, data } = props;
     const [ view, setView ] = useState( 'newsfeed' );
+    // const [ userTopics, setUserTopics ] = useState( [] );
+
+    // const fetchData = () => {
+    //     console.log( 'click' )
+    //     const options = { decrypt: false }
+    //     session.getFile('userTopics.json', options )
+    //     .then( ( file )  => {
+    //         var topic = JSON.parse(file || '[]')
+    //         setUserTopics( topic );
+    //     })
+    // }
+
+    // useEffect( () => {
+    //     fetchData()
+    // }, [] ) 
 
     return (
         <Wrapper>
@@ -129,7 +145,17 @@ const Dashboard = ( props ) => {
                 </MainMenu>
             </DashboardTop>
 
-            <Mid>
+            {/* {
+                !userTopics && <NewUserPage 
+                    signIn = { handleSignIn } 
+                    signOut = { handleSignOut } 
+                    session = { session }
+                    data = { data }
+                    history = { props }
+                />
+            } */}
+
+            <Mid> 
                 <DrawerContent>
                     { 
                         notifications.map( notif => {
@@ -197,9 +223,8 @@ const Dashboard = ( props ) => {
                                 )
                             })
                         }
-                    </SavedResources>
+                  </SavedResources>
                 } 
-
             </Mid>
         </Wrapper>
     )

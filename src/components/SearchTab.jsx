@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Button } from '@material-ui/core';
 import { styled  as styledm } from '@material-ui/styles';
@@ -35,9 +35,18 @@ const SearchTab = ( props ) => {
         // border: 'none'
     });
 
-    const handleClick = ( e ) => {
+    const { session } = props
+    const [ userTopics, setUserTopics ] = useState( [] );
+
+    const handleTopicAdd = ( e ) => {
         e.preventDefault();
-        console.log( e.target.textContent );
+        const topic = e.target.textContent;
+        saveAddedTopics( topic );
+    }
+
+    const saveAddedTopics = ( topic ) => {
+        const options = { encrypt: false }
+        session.putFile( 'userTopics.json', JSON.stringify( topic ), options ).then( res => { console.log( 'yup', res )});
     }
 
     return (
@@ -47,8 +56,8 @@ const SearchTab = ( props ) => {
                     <li> 
                         <CustomButton 
                             color = { props.color }
-                            onClick = { handleClick }
-                            variant = { props.variant || 'outlined' } 
+                            onClick = { handleTopicAdd }
+                            variant = { props.variant || 'outlined' }
                             > { topic.title } 
                         </CustomButton> 
                     </li>
