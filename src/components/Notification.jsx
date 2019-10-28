@@ -9,9 +9,8 @@ const Notification = ( props ) => {
         display: flex;
         margin: 0 auto;
         margin-top: 5%;
-        min-height: 10vh;
         margin-bottom: 5%;
-        padding-left: 25px;
+        padding: 15px;
         background-color: white;
         justify-content: center;
         flex-direction: column;
@@ -21,7 +20,7 @@ const Notification = ( props ) => {
     return (
         <Notification>
             <p>
-               { props.subject || 'Sonia L' } { props.action || 'protested' } your { props.object || 'post'} <br/>
+               { props.subject } { props.action } your { props.object } <br/>
                 <TimeStamp > { props.time || '12/31/1997 11:01pm' } </TimeStamp>
             </p>
         </Notification> 

@@ -8,7 +8,7 @@ import { yellow } from '@material-ui/core/colors';
 const Nav = styled.nav`
     top: 0;
     z-index: 1;
-    height: 10vh;
+    height: 7vh;
     display: flex;
     position: sticky;
     align-items: center;
@@ -82,7 +82,7 @@ const LandingNav = ( props ) => {
                 </Button>
                 <Button 
                     className = { classes.upgradeButton } 
-                    size='large' 
+                    size='small' 
                     variant='outlined'
                     color='secondary'
                     onClick = { session.isUserSignedIn() ? props.signOut : props.signIn }

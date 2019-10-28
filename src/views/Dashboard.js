@@ -17,13 +17,14 @@ const Wrapper = styled.div`
     }
 `
 const DashboardTop = styled.div`
-    top: 10vh;
+    top: 7vh;
     z-index: 2;
     display: flex;
     position: sticky;
     align-items: center;
-    border: solid white 1px;
+    // border: solid rebeccapurple 3px;
     background-color: whitesmoke;
+
 `
     const DrawerMenu = styled.div`
         width: 25vw;
@@ -86,7 +87,7 @@ const Mid = styled.div`{
         }`
 
     const SavedResources = styled.div`{
-        width: 75vw;
+        width: 80vw;
         height: 100vh;
         display: flex;
         flex-wrap: wrap;
@@ -136,9 +137,10 @@ const Dashboard = ( props ) => {
                         notifications.map( notif => {
                             return (
                                 <Notification
-                                    subject = { notif.subject }
+                                    subject = { notif.person }
                                     action = { notif.action }
                                     object = { notif.object }
+                                    time = { notif.time }
                                 />
                             )
                         })
@@ -151,7 +153,7 @@ const Dashboard = ( props ) => {
                             posts.map( post => {
                                 return (
                                     <Post 
-                                        showComments = { true }
+                                        showComments = { false }
                                         isParentPost = { true }
                                         avatar = { post.avatar }
                                         time = { post.time }

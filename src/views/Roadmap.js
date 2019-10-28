@@ -7,8 +7,8 @@ const Wrapper = styled.div`{
     // border: solid green 2px;
     width: 90vw;
     margin: 0 auto;
-    padding: 2%;
-    margin-top: 1%;
+    padding: 1%;
+    // margin-top: 1%;
 }`
 
 const Heading = styled.h1`{

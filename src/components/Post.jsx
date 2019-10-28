@@ -11,10 +11,10 @@ const Wrapper = styled.div`{
     width: 85%;
     margin: 0 auto;
     margin-bottom: 3%;
-    margin-top: 3%;
+    // margin-top: 3%;
     background-color: white;
     border-bottom: solid whitesmoke 1px;
-    border-top: solid whitesmoke 1px;
+    // border-top: solid whitesmoke 1px;
     // box-shadow: 2px 2px 3px 3px rgba(0,0,0,0.25);
     height: 100%;
     padding: 3%;
@@ -40,8 +40,8 @@ const Reactions = styled.div`{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 5%;    
-    margin-top: 3%;
+    // margin-bottom: 2%;    
+    // margin-top: 3%;
 }`
     // const Emojis = styled.div`{
     //     display: flex;
@@ -51,7 +51,7 @@ const Reactions = styled.div`{
 const CommentBar = styled.div`{
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 3%;
+    // margin-bottom: 3%;
 }`
 
 const CommentsWrapper = styled.div`{

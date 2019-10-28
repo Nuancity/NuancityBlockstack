@@ -1,677 +1,108 @@
 var faker = require( 'faker' );
 
+const createTopics = ( amount = 31 ) => {
+    let mockTopics = [ 'Economics', 'Politics', 'Conspiracy', 'Philosophy', 'Artificial Intelligence', 'Psychology' ];
+    let topics = [];
 
+    while ( amount > 0 ) {
+        let topic = {
+            title: mockTopics[ amount ] || faker.commerce.department(),
+        };
+        topics.push( topic );
+        amount --;
+    }
+    return topics;
+}
+export let topics = createTopics();
 
-export let topics = [
-    {
-        title: 'Misconceptions'
-    },
-    {
-        title: 'Art'
-    },
-    {
-        title: 'Artificial Intelligence'
-    },
-    {
-        title: 'Psychology'
-    },
-    {
-        title: 'Software Engineering'
-    },
-    {
-        title: 'Physics'
-    },
-    {
-        title: 'Philosophy'
-    },
-    {
-        title: 'History'
-    },
-    {
-        title: 'Comedy'
-    },
-    {
-        title: 'Music'
-    },
-    {
-        title: 'Conspiracy'
-    },
-    {
-        title: 'Politics'
-    },
-    {
-        title: 'Economics'
-    },
-    {
-        title: faker.commerce.department()
-    },
-    {
-        title: faker.commerce.department()
-    },
-    {
-        title: faker.commerce.department()
-    },
-    {
-        title: faker.commerce.department()
-    },
-    {
-        title: faker.commerce.department()
-    },
-    {
-        title: faker.commerce.department()
-    },
-    {
-        title: faker.commerce.department()
-    },
-    {
-        title: faker.commerce.department()
-    },
-    {
-        title: faker.commerce.department()
-    },
-    {
-        title: faker.commerce.department()
-    },
-    {
-        title: faker.commerce.department()
-    },
-    {
-        title: faker.commerce.department()
-    },
-    {
-        title: faker.commerce.department()
-    },
-    {
-        title: faker.commerce.department()
-    },
-    {
-        title: faker.commerce.department()
-    },
-    {
-        title: faker.commerce.department()
-    },
+const createNotifications = ( amount = 10 ) => {
+    let actions = [ 'protested', 'extended', 'commented', 'reacted', 'shared' ];
+    let objects = [ 'post', 'comment', 'resource' ];
+    let notifications = [];
 
-    {
-        title: faker.commerce.department()    
-    },
-];
+    while ( amount > 0 ) {
+        let notif = {
+            person: `${ faker.name.firstName() } ${ faker.name.lastName() }`,
+            action: actions[ faker.random.number( actions.length ) ],
+            object: objects[ faker.random.number( objects.length ) ],
+            // time: faker.date.recent()
+        };
+        notifications.push( notif );
+        amount --;
+    }
+    return notifications;
+}
+export let notifications = createNotifications();
 
-export let notifications = [
-    {
-        subject: 'Sonia L',
-        action: 'protested',
-        object: 'post'
-    },
-    {
-        subject: 'Marco C',
-        action: 'extended',
-        object: 'post'
-    },
-    {
-        subject: 'Clarence W',
-        action: 'commented',
-        object: 'post'
-    },
-    {
-        subject: 'Ralph Y',
-        action: 'liked',
-        object: 'post'
-    },
-    {
-        subject: 'Jason M',
-        action: 'shared',
-        object: 'post'
-    },
-    {
-        subject: 'Jason M',
-        action: 'shared',
-        object: 'post'
-    },
-    {
-        subject: 'Jason M',
-        action: 'shared',
-        object: 'post'
-    },
-    {
-        subject: 'Jason M',
-        action: 'shared',
-        object: 'post'
-    },
-    {
-        subject: 'Jason M',
-        action: 'shared',
-        object: 'post'
-    },
-    {
-        subject: 'Sonia L',
-        action: 'protested',
-        object: 'post'
-    },
-    {
-        subject: 'Marco C',
-        action: 'extended',
-        object: 'post'
-    },
-    {
-        subject: 'Clarence W',
-        action: 'commented',
-        object: 'post'
-    },
-    {
-        subject: 'Ralph Y',
-        action: 'liked',
-        object: 'post'
-    },
-    {
-        subject: 'Jason M',
-        action: 'shared',
-        object: 'post'
-    },
-    {
-        subject: 'Jason M',
-        action: 'shared',
-        object: 'post'
-    },
-    {
-        subject: 'Jason M',
-        action: 'shared',
-        object: 'post'
-    },
-    {
-        subject: 'Jason M',
-        action: 'shared',
-        object: 'post'
-    },
-    {
-        subject: 'Jason M',
-        action: 'shared',
-        object: 'post'
-    },
-];
+const createPosts = ( amount = 20 ) => {
+    let posts = [];
+    while ( amount > 0 ) {
+       let post = {
+            content: faker.lorem.paragraphs( 3 ),
+            protestCount: 1,
+            commentCount: 1,
+            extensionCount: 1,
+            reactionsCount: 20,
+            avatar: faker.image.avatar(),
+            username: `${ faker.name.firstName() } ${ faker.name.lastName() }`,
+        }
+        posts.push( post );
+        amount --;
+    }
+    return posts;
+}
+export let posts = createPosts();
 
-export let posts = [
-    {
-        content: 'Maecenas et eros arcu. Aenean dignissim commodo dolor sit amet iaculis. Nullam libero orci, dignissim id est vitae, viverra dapibus ipsum. Nunc elementum vehicula lorem, vel malesuada nibh maximus at. Sed pellentesque justo orci, sit amet porttitor arcu sollicitudin sit amet. Aenean eu porttitor diam... (see more)',
-        protestCount: 1,
-        commentCount: 1,
-        extensionCount: 1,
-        reactionsCount: 20,
-        avatar: faker.image.avatar(),
-        username: faker.internet.userName(),
-    },
-    {
-        content: 'Maecenas et eros arcu. Aenean dignissim commodo dolor sit amet iaculis. Nullam libero orci, dignissim id est vitae, viverra dapibus ipsum. Nunc elementum vehicula lorem, vel malesuada nibh maximus at. Sed pellentesque justo orci, sit amet porttitor arcu sollicitudin sit amet. Aenean eu porttitor diam. Maecenas et eros arcu. Aenean dignissim commodo dolor sit amet iaculis. Nullam libero orci, dignissim id est vitae, viverra dapibus ipsum. Nunc elementum vehicula lorem, vel malesuada nibh maximus at. Sed pellentesque justo orci, sit amet porttitor arcu sollicitudin sit amet. Aenean eu porttitor diam. Maecenas et eros arcu. Aenean dignissim commodo dolor sit amet iaculis. Nullam libero orci, dignissim id est vitae, viverra dapibus ipsum. Nunc elementum vehicula lorem, vel malesuada nibh maximus at. Sed pellentesque justo orci, sit amet porttitor arcu sollicitudin sit amet. Aenean eu porttitor diam. Maecenas et eros arcu. Aenean dignissim commodo dolor sit amet iaculis. Nullam libero orci, dignissim id est vitae, viverra dapibus ipsum. Nunc elementum vehicula lorem, vel malesuada nibh maximus at. Sed pellentesque justo orci, sit amet porttitor arcu sollicitudin sit amet. Aenean eu porttitor diam.' ,
-        protestCount: 1,
-        commentCount: 1,
-        extensionCount: 1,
-        reactionsCount: 20,
-        avatar: faker.image.avatar(),
-        username: faker.internet.userName(),
-    },
-    {
-        content: 'Maecenas et eros arcu. Aenean dignissim commodo dolor sit amet iaculis. Nullam libero orci, dignissim id est vitae, viverra dapibus ipsum. Nunc elementum vehicula lorem, vel malesuada nibh maximus at. Sed pellentesque justo orci, sit amet porttitor arcu sollicitudin sit amet. Aenean eu porttitor diam... (see more)',
-        protestCount: 1,
-        commentCount: 1,
-        extensionCount: 1,
-        reactionsCount: 20,
-        avatar: faker.image.avatar(),
-        username: faker.internet.userName(),
-    },
-    {
-        content: 'Maecenas et eros arcu. Aenean dignissim commodo dolor sit amet iaculis. Nullam libero orci, dignissim id est vitae, viverra dapibus ipsum. Nunc elementum vehicula lorem, vel malesuada nibh maximus at. Sed pellentesque justo orci, sit amet porttitor arcu sollicitudin sit amet. Aenean eu porttitor diam... (see more)',
-        protestCount: 1,
-        commentCount: 1,
-        extensionCount: 1,
-        reactionsCount: 20,
-        avatar: faker.image.avatar(),
-        username: faker.internet.userName(),
-    },
-    {
-        content: 'Maecenas et eros arcu. Aenean dignissim commodo dolor sit amet iaculis. Nullam libero orci, dignissim id est vitae, viverra dapibus ipsum. Nunc elementum vehicula lorem, vel malesuada nibh maximus at. Sed pellentesque justo orci, sit amet porttitor arcu sollicitudin sit amet. Aenean eu porttitor diam... (see more)',
-        protestCount: 1,
-        commentCount: 1,
-        extensionCount: 1,
-        reactionsCount: 20,
-        avatar: faker.image.avatar(),
-        username: faker.internet.userName(),
-    },
-    {
-        content: 'Maecenas et eros arcu. Aenean dignissim commodo dolor sit amet iaculis. Nullam libero orci, dignissim id est vitae, viverra dapibus ipsum. Nunc elementum vehicula lorem, vel malesuada nibh maximus at. Sed pellentesque justo orci, sit amet porttitor arcu sollicitudin sit amet. Aenean eu porttitor diam... (see more)',
-        protestCount: 1,
-        commentCount: 1,
-        extensionCount: 1,
-        reactionsCount: 20,
-        avatar: faker.image.avatar(),
-        username: faker.internet.userName(),
-    },
-];
+const createResources = ( amount = 20 ) => {
+    let resources = [];
+    while ( amount > 0 ) {
+       let resource = {  
+            name: 'Yanna Faith',
+            alignmentScore: '70',
+            classification: 'supporter',
+            requestDate: '12/31/1997',
+            decisionDate: '12/31/1997',
+        }
+        resources.push( resource );
+        amount --;
+    }
+    return resources;
+}
+export let resources = createResources();
 
+const createNetwork = ( amount = 20 ) => {
+    let people = [];
+    while ( amount > 0 ) {
+       let node = {  
+            name: `${ faker.name.firstName() } ${ faker.name.lastName() }`,
+            alignmentScore: '65',
+            classification: 'supporter',
+            requestDate: '12/31/1997',
+            decisionDate: '12/31/1997',
+        }
+        people.push( node );
+        amount --;
+    }
+    return resources;
+}
+export let peopleNetwork = createNetwork();
 
-export let resources = [
-    {
-        name: 'Yanna Faith',
-        alignmentScore: '70',
-        classification: 'supporter',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Donald Glover',
-        alignmentScore: '-70',
-        classification: 'opposer',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-
-    },
-    {
-        name: 'Chris Rock',
-        alignmentScore: '20',
-        classification: 'compliment',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Nick Canon',
-        alignmentScore: '50',
-        classification: null,
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Yanna Faith',
-        alignmentScore: '70',
-        classification: 'supporter',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Donald Glover',
-        alignmentScore: '-70',
-        classification: 'opposer',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-
-    },
-    {
-        name: 'Chris Rock',
-        alignmentScore: '20',
-        classification: 'compliment',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Nick Canon',
-        alignmentScore: '50',
-        classification: null,
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Yanna Faith',
-        alignmentScore: '70',
-        classification: 'supporter',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Donald Glover',
-        alignmentScore: '-70',
-        classification: 'opposer',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-
-    },
-    {
-        name: 'Chris Rock',
-        alignmentScore: '20',
-        classification: 'compliment',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Nick Canon',
-        alignmentScore: '50',
-        classification: null,
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Yanna Faith',
-        alignmentScore: '70',
-        classification: 'supporter',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Donald Glover',
-        alignmentScore: '-70',
-        classification: 'opposer',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-
-    },
-    {
-        name: 'Chris Rock',
-        alignmentScore: '20',
-        classification: 'compliment',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },   
-];
-
-export let peopleNetwork = [
-    {
-        name: 'Yanna Faith',
-        alignmentScore: '70',
-        classification: 'supporter',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Donald Glover',
-        alignmentScore: '-70',
-        classification: 'opposer',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-
-    },
-    {
-        name: 'Chris Rock',
-        alignmentScore: '20',
-        classification: 'compliment',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Nick Canon',
-        alignmentScore: '50',
-        classification: null,
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Yanna Faith',
-        alignmentScore: '70',
-        classification: 'supporter',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Donald Glover',
-        alignmentScore: '-70',
-        classification: 'opposer',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-
-    },
-    {
-        name: 'Chris Rock',
-        alignmentScore: '20',
-        classification: 'compliment',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Nick Canon',
-        alignmentScore: '50',
-        classification: null,
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Yanna Faith',
-        alignmentScore: '70',
-        classification: 'supporter',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Donald Glover',
-        alignmentScore: '-70',
-        classification: 'opposer',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-
-    },
-    {
-        name: 'Chris Rock',
-        alignmentScore: '20',
-        classification: 'compliment',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Nick Canon',
-        alignmentScore: '50',
-        classification: null,
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Yanna Faith',
-        alignmentScore: '70',
-        classification: 'supporter',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Donald Glover',
-        alignmentScore: '-70',
-        classification: 'opposer',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-
-    },
-    {
-        name: 'Chris Rock',
-        alignmentScore: '20',
-        classification: 'compliment',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Nick Canon',
-        alignmentScore: '50',
-        classification: null,
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Yanna Faith',
-        alignmentScore: '70',
-        classification: 'supporter',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Donald Glover',
-        alignmentScore: '-70',
-        classification: 'opposer',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-
-    },
-    {
-        name: 'Chris Rock',
-        alignmentScore: '20',
-        classification: 'compliment',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Nick Canon',
-        alignmentScore: '50',
-        classification: null,
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Yanna Faith',
-        alignmentScore: '70',
-        classification: 'supporter',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Donald Glover',
-        alignmentScore: '-70',
-        classification: 'opposer',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-
-    },
-    {
-        name: 'Chris Rock',
-        alignmentScore: '20',
-        classification: 'compliment',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Nick Canon',
-        alignmentScore: '50',
-        classification: null,
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Yanna Faith',
-        alignmentScore: '70',
-        classification: 'supporter',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Donald Glover',
-        alignmentScore: '-70',
-        classification: 'opposer',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-
-    },
-    {
-        name: 'Chris Rock',
-        alignmentScore: '20',
-        classification: 'compliment',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Nick Canon',
-        alignmentScore: '50',
-        classification: null,
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Yanna Faith',
-        alignmentScore: '70',
-        classification: 'supporter',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Donald Glover',
-        alignmentScore: '-70',
-        classification: 'opposer',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-
-    },
-    {
-        name: 'Chris Rock',
-        alignmentScore: '20',
-        classification: 'compliment',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Nick Canon',
-        alignmentScore: '50',
-        classification: null,
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Yanna Faith',
-        alignmentScore: '70',
-        classification: 'supporter',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Donald Glover',
-        alignmentScore: '-70',
-        classification: 'opposer',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-
-    },
-    {
-        name: 'Chris Rock',
-        alignmentScore: '20',
-        classification: 'compliment',
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-    {
-        name: 'Nick Canon',
-        alignmentScore: '50',
-        classification: null,
-        requestDate: '12/31/1997',
-        decisionDate: '12/31/1997',
-    },
-
-];
-
-export const comments = [
-    {
-        content: 'Maecenas et eros arcu. Aenean dignissim commodo dolor sit amet iaculis. Nullam libero orci, dignissim id est vitae, viverra dapibus ipsum. Nunc elementum vehicula lorem, vel malesuada nibh maximus at. Sed pellentesque justo orci, sit amet porttitor arcu sollicitudin sit amet. Aenean eu porttitor diam... (see more)',
+const createComments = ( amount = 20 ) => {
+    let comments = [];
+    while ( amount > 0 ) {
+       let comment = {
+        content: faker.lorem.paragraphs( 1 ),
         protestCount: 1,
         commentCount: 1,
         extensionCount: 1,
         reactionsCount: 20
-    },
-    {
-        content: 'Maecenas et eros arcu. Aenean dignissim commodo dolor sit amet iaculis. Nullam libero orci, dignissim id est vitae, viverra dapibus ipsum. Nunc elementum vehicula lorem, vel malesuada nibh maximus at. Sed pellentesque justo orci, sit amet porttitor arcu sollicitudin sit amet. Aenean eu porttitor diam... (see more)',
-        protestCount: 1,
-        commentCount: 1,
-        extensionCount: 1,
-        reactionsCount: 20
-    },
-    {
-        content: 'Maecenas et eros arcu. Aenean dignissim commodo dolor sit amet iaculis. Nullam libero orci, dignissim id est vitae, viverra dapibus ipsum. Nunc elementum vehicula lorem, vel malesuada nibh maximus at. Sed pellentesque justo orci, sit amet porttitor arcu sollicitudin sit amet. Aenean eu porttitor diam... (see more)',
-        protestCount: 1,
-        commentCount: 1,
-        extensionCount: 1,
-        reactionsCount: 20
-    },
-    {
-        content: 'Maecenas et eros arcu. Aenean dignissim commodo dolor sit amet iaculis. Nullam libero orci, dignissim id est vitae, viverra dapibus ipsum. Nunc elementum vehicula lorem, vel malesuada nibh maximus at. Sed pellentesque justo orci, sit amet porttitor arcu sollicitudin sit amet. Aenean eu porttitor diam... (see more)',
-        protestCount: 1,
-        commentCount: 1,
-        extensionCount: 1,
-        reactionsCount: 20
-    },
-    {
-        content: 'Maecenas et eros arcu. Aenean dignissim commodo dolor sit amet iaculis. Nullam libero orci, dignissim id est vitae, viverra dapibus ipsum. Nunc elementum vehicula lorem, vel malesuada nibh maximus at. Sed pellentesque justo orci, sit amet porttitor arcu sollicitudin sit amet. Aenean eu porttitor diam... (see more)',
-        protestCount: 1,
-        commentCount: 1,
-        extensionCount: 1,
-        reactionsCount: 20
-    },
-    {
-        content: 'Maecenas et eros arcu. Aenean dignissim commodo dolor sit amet iaculis. Nullam libero orci, dignissim id est vitae, viverra dapibus ipsum. Nunc elementum vehicula lorem, vel malesuada nibh maximus at. Sed pellentesque justo orci, sit amet porttitor arcu sollicitudin sit amet. Aenean eu porttitor diam... (see more)',
-        protestCount: 1,
-        commentCount: 1,
-        extensionCount: 1,
-        reactionsCount: 20
-    },
-];
-
-// export const topics = [ 'Electrical', 'Software', 'Mechanical', 'Chemical', 'Social', 'Robotics'];
-
-export const engineering = [  'Electrical', 'Software', 'Mechanical', 'Chemical', 'Social', 'Robotics'];
+    }
+        comments.push( comment );
+        amount --;
+    }
+    return resources;
+}
+export let comments = createComments();
 
 
 /* 
