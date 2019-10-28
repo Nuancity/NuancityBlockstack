@@ -9,6 +9,7 @@ import TopicFeed from './views/TopicFeed.js';
 import { Route } from "react-router-dom";
 import { UserSession, AppConfig } from 'blockstack';
 import './App.css';
+import Roadmap from './views/Roadmap.js';
 
 const appConfig = new AppConfig( [ 'store_write', 'publish_data' ] );
 const userSession = new UserSession( { appConfig: appConfig } );
@@ -78,6 +79,11 @@ const App =  ( props ) => {
       <Route 
         path='/post' 
         component = { SinglePost } 
+        session = { userSession }
+      />
+      <Route 
+        path='/roadmap' 
+        component = { Roadmap } 
         session = { userSession }
       />
     </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components';
 import { Button, Paper } from '@material-ui/core';
 import Post from '../components/Post.jsx';
@@ -7,7 +7,6 @@ import Node from '../components/Node.jsx';
 import Notification  from '../components/Notification';
 import { withStyles } from '@material-ui/styles';
 import { notifications, posts, peopleNetwork, resources } from '../MockData.js';
-import NewUserPage from './NewUserPage.js';
 
 var faker = require('faker');
 
@@ -22,24 +21,21 @@ const DashboardTop = styled.div`
     z-index: 2;
     display: flex;
     position: sticky;
-    background-color: whitesmoke;
     align-items: center;
     border: solid white 1px;
+    background-color: whitesmoke;
 `
     const DrawerMenu = styled.div`
-        height: 7vh;
         width: 25vw;
         display: flex;
         align-items: center;
-        background-color: #5e6080;
-        background-color: whitesmoke;
+        // background-color: #5e6080;
         justify-content: space-around;
         // border-right: solid white 2px;
     `
     const DrawerContent = styled.div`{
         background-color: whitesmoke;
         width: 25vw;
-        height: 100vh;
         overflow: scroll;
         display: flex;
         flex-direction: column;
@@ -48,6 +44,8 @@ const DashboardTop = styled.div`
 
 const Mid = styled.div`{
     display: flex;
+    // border: solid red 2px;
+    height: 180vh;
 }`
 
     const MainMenu = styled.div`
@@ -60,11 +58,11 @@ const Mid = styled.div`{
     `
 
     const Posts = styled.div`{
-        height: 100vh;
         overflow: scroll;
         width: 80vw;
         display: flex;
         flex-direction: column;
+        // border: solid blue 2px
     }`
 
     const Network = styled.div`{
@@ -89,10 +87,12 @@ const Mid = styled.div`{
 
     const SavedResources = styled.div`{
         width: 75vw;
+        height: 100vh;
         display: flex;
         flex-wrap: wrap;
         overflow: scroll;
         justify-content: center;
+        // border: solid blue 2px
     }`
 
     const styles = () => ({
@@ -100,7 +100,7 @@ const Mid = styled.div`{
             margin: '4%',
             elevation: '3',
             width: '150px',
-            height: '150px',
+            height: '170px',
         },
         button: {
             '&:focus': {
@@ -110,23 +110,8 @@ const Mid = styled.div`{
     })
 
 const Dashboard = ( props ) => {
-    const { classes, session, handleSignIn, handleSignOut, data } = props;
+    const { classes } = props;
     const [ view, setView ] = useState( 'newsfeed' );
-    // const [ userTopics, setUserTopics ] = useState( [] );
-
-    // const fetchData = () => {
-    //     console.log( 'click' )
-    //     const options = { decrypt: false }
-    //     session.getFile('userTopics.json', options )
-    //     .then( ( file )  => {
-    //         var topic = JSON.parse(file || '[]')
-    //         setUserTopics( topic );
-    //     })
-    // }
-
-    // useEffect( () => {
-    //     fetchData()
-    // }, [] ) 
 
     return (
         <Wrapper>
@@ -144,16 +129,6 @@ const Dashboard = ( props ) => {
                     <Button className = { classes.button } disabled  onClick= { () => setView( 'writings' ) } > Writings </Button>
                 </MainMenu>
             </DashboardTop>
-
-            {/* {
-                !userTopics && <NewUserPage 
-                    signIn = { handleSignIn } 
-                    signOut = { handleSignOut } 
-                    session = { session }
-                    data = { data }
-                    history = { props }
-                />
-            } */}
 
             <Mid> 
                 <DrawerContent>

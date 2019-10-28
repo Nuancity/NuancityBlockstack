@@ -16,7 +16,7 @@ const Wrapper = styled.div`{
 
 const Left = styled.div`
     display: flex;
-    width: 35vw;
+    width: 50vw;
     margin-top: 20px;
     background-color: white;
     justify-content: space-around;
@@ -95,7 +95,7 @@ const NewUserPage = ( props ) => {
 
     return (
         <Div>
-            { ( session.isUserSignedIn() && data && !userTopics ) &&
+            { ( session.isUserSignedIn() && data ) &&
                 <Div>
                     <Div>
                         <Header> 
@@ -111,20 +111,20 @@ const NewUserPage = ( props ) => {
                             <SearchTab 
                                 list = { topics.slice( 0, 6 ) } 
                                 color = 'primary' 
-                                count = { 6 } 
+                                count = { 10 } 
                                 session = { session }
                             />
                             <SearchTab 
                                 list = { topics.slice( 6, 9 ) }
                                 splice =  '6:3' color = 'red' 
-                                count = { 3 }
+                                count = { 10 }
                                 session = { session }
                              />
                             <SearchTab 
                                 list = { topics.slice( 9, 14 ) }
                                 splice = '9:5' 
                                 color = 'secondary' 
-                                count = { 5 }
+                                count = { 10 }
                                 session = { session }
                             />
                         </Left>
@@ -132,19 +132,19 @@ const NewUserPage = ( props ) => {
                             <SearchTab 
                                 list = { topics.slice( 14, 18 ) } 
                                 color = 'green' 
-                                count = { 4 } 
+                                count = { 10 } 
                                 session = { session }
                             />
                             <SearchTab 
                                 list = { topics.slice( 18, 25 ) }
                                 color = 'purple' 
-                                count = { 7 } 
+                                count = { 10 } 
                                 session = { session }
                             />
                             <SearchTab 
                                 list = { topics.slice( 25, 30 ) } 
                                 color = 'blue' 
-                                count = { 6 } 
+                                count = { 10 } 
                                 session = { session }
                             />
                         </Right>

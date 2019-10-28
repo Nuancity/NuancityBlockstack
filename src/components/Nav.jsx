@@ -68,7 +68,7 @@ const LandingNav = ( props ) => {
                 </Button>
                 <Button  
                     className = { classes.textLink } 
-                    href='http://localhost:3000/newUser'
+                    href='http://localhost:3000/roadmap'
                     variant='text'  
                     size='small' 
                     > Roadmap 

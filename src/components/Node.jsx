@@ -43,7 +43,7 @@ const styles = () => ({
         width: '200px',
         borderRadius: '15px',
         display: 'flex',
-        height: '50px',
+        height: '65px',
         justifyContent: 'space-between',
     }
 })

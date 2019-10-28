@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { } from 'react';
 import styled from 'styled-components';
 import { Button } from '@material-ui/core';
 import { styled  as styledm } from '@material-ui/styles';
@@ -36,7 +36,6 @@ const SearchTab = ( props ) => {
     });
 
     const { session } = props
-    const [ userTopics, setUserTopics ] = useState( [] );
 
     const handleTopicAdd = ( e ) => {
         e.preventDefault();

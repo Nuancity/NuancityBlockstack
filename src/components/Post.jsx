@@ -9,14 +9,15 @@ import { withStyles } from '@material-ui/styles';
 
 const Wrapper = styled.div`{
     width: 85%;
-    height: 100%;
-    padding: 5%;
     margin: 0 auto;
     margin-bottom: 3%;
+    margin-top: 3%;
     background-color: white;
     border-bottom: solid whitesmoke 1px;
     border-top: solid whitesmoke 1px;
     // box-shadow: 2px 2px 3px 3px rgba(0,0,0,0.25);
+    height: 100%;
+    padding: 3%;
 }`
 
 const Top = styled.div`{
@@ -42,10 +43,10 @@ const Reactions = styled.div`{
     margin-bottom: 5%;    
     margin-top: 3%;
 }`
-    const Emojis = styled.div`{
-        display: flex;
-        align-items: center;
-    }`
+    // const Emojis = styled.div`{
+    //     display: flex;
+    //     align-items: center;
+    // }`
 
 const CommentBar = styled.div`{
     display: flex;
@@ -55,14 +56,13 @@ const CommentBar = styled.div`{
 
 const CommentsWrapper = styled.div`{
     // border-bottom: solid silver 1px;
-    // height: 50vh;
     margin-left: 5%;
     margin-top: 3%;
     margin-bottom: 55px;
+    overflow: scroll;
 }`
 
     const Comments = styled.div`{
-        // border: solid silver 2px;
         overflow: scroll;
         height: 50vh;
         padding: 2%,
@@ -85,7 +85,7 @@ const Post = ( props ) => {
     const { classes } = props;
     return (
         <Wrapper>
-
+            {/* <Tag></Tag> */}
             <Top>
                 <Details>
                     <Avatar src = { props.avatar } />
@@ -105,7 +105,7 @@ const Post = ( props ) => {
             </Content>
 
             <Reactions>
-                <Emojis>
+                {/* <Emojis>
                     <IconSmallButton> { props.reactionsCount || 20 } </IconSmallButton>
                     <IconSmallButton> <i class="far fa-thumbs-up"> </i> </IconSmallButton>
                     <IconSmallButton> <i class="far fa-thumbs-down"></i> </IconSmallButton>
@@ -115,7 +115,7 @@ const Post = ( props ) => {
                     <IconSmallButton> <span role='img' aria-label='fist' > 👀 </span> </IconSmallButton>
                     <IconSmallButton> <span role='img' aria-label='fist' > 💩 </span> </IconSmallButton>
                     <IconSmallButton> <i class="fal fa-plus"></i> </IconSmallButton>
-                </Emojis>
+                </Emojis> */}
                 {
                     <p style={{
                         // backgroundColor: 'whitesmoke'
@@ -169,7 +169,7 @@ const Post = ( props ) => {
                                                 props.content || 'Maecenas et eros arcu. Aenean dignissim commodo dolor sit amet iaculis. Nullam libero orci, dignissim id est vitae, viverra dapibus ipsum. Nunc elementum vehicula lorem, vel malesuada nibh maximus at. Sed pellentesque justo orci, sit amet porttitor arcu sollicitudin sit amet. Aenean eu porttitor diam...' 
                                             }
                                         </Content>
-                                        <Emojis>
+                                        {/* <Emojis>
                                             <IconSmallButton> { props.reactionsCount || 20 } </IconSmallButton>
                                             <IconSmallButton><i class="far fa-thumbs-up"></i> </IconSmallButton>
                                             <IconSmallButton><i class="far fa-thumbs-down"></i> </IconSmallButton>
@@ -178,7 +178,7 @@ const Post = ( props ) => {
                                             <IconSmallButton> <span role='img' aria-label='fist' > 🙄 </span> </IconSmallButton>
                                             <IconSmallButton> <span role='img' aria-label='fist' > 👀 </span> </IconSmallButton>
                                             <IconSmallButton> <span role='img' aria-label='fist' > 💩 </span> </IconSmallButton>
-                                        </Emojis>
+                                        </Emojis> */}
                                 </CommentsWrapper>
                                 )
                             })
