@@ -1,16 +1,53 @@
-channels / topics 
-
-[
+topics = [
     {
 
     },
     {
 
+    }
+];
+
+notifications = [
+    {
+
     },
-]
+    {
 
-posts
+    }
+];
 
-people
+posts = [
+    {
 
-comments
+    },
+    {
+
+    }
+];
+
+resources = [
+    {
+
+    },
+    {
+
+    }
+];
+
+network = [
+    {
+
+    },
+    {
+
+    }
+];
+
+comments = [
+    {
+
+    },
+    {
+
+    }
+];
