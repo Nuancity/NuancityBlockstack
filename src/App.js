@@ -53,38 +53,31 @@ const App =  ( props ) => {
           session = { userSession }
           data = { data }
           history = { props }
-          />
-        }
+          /> }
       />
       <Route 
         exact path='/' 
         component = { Landing } 
-        session = { userSession }
       />
       <Route 
         path='/topics' 
         component = { Topics } 
-        session = { userSession }
       />
       <Route 
         path='/topic' 
         component = { TopicFeed } 
-        session = { userSession }
       />
       <Route 
         path='/dashboard' 
         component = { Dashboard } 
-        session = { userSession }
       />
       <Route 
         path='/post' 
         component = { SinglePost } 
-        session = { userSession }
       />
       <Route 
         path='/roadmap' 
         component = { Roadmap } 
-        session = { userSession }
       />
     </div>
   );

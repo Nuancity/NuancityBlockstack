@@ -112,7 +112,7 @@ const Landing = ( props ) => {
     return (
         <div>
             <TopStyles >
-                <Header> Peer Review Reimagined. Social Learning Streamlined. Information Organized. Creativity Unleashed. </Header>
+                <Header> Peer Review Reimagined. Social Learning Streamlined. Information Organized. Creativity Unleashed.</Header>
                 <Photo src='/images/undraw_posting.svg' alt='calender' />
                 {/* <Buttons >
                     <Button href='https://www.nuancity.com/topics' variant='outlined' size='large' color='primary' > Browse Content </Button> 

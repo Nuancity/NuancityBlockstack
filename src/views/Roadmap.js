@@ -11,13 +11,13 @@ const Wrapper = styled.div`{
     // margin-top: 1%;
 }`
 
-const Heading = styled.h1`{
+const Heading = styled.h1`
     border-bottom: solid ${ primary } 2px;
     font-size: 1.7rem;
     margin-top: 2%;
     margin-bottom: 15px;
     // background-color: whitesmoke;
-}`
+`
 
 const Content = styled.p`{
     background-color: whitesmoke;
@@ -25,9 +25,16 @@ const Content = styled.p`{
     padding: 2%;
 }`
 
+const Main = styled( Heading )`
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8%;
+    margin-top: 5%;
+`
 const Roadmap = () => {
     return (
         <Wrapper>
+            <Main> A learning expirement, aiming to change the way we learn. </Main>
             <Heading> Mission </Heading>
             <Content>
                 Let's start with the boldest claim: that Nuancity could become an alternative Peer Review system.  At present, "Peer Review" commonly refers to the process of researchers submitting their findings into academic journals.  Nuancity flips two central aspects of "Peer Review" onto it's head: the wait time, and the part of the creative and research processes that are being reviewed. 

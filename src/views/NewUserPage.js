@@ -78,11 +78,9 @@ const NextButton = styled.button`{
     border-radius: 5px;
 }`
 
-
 const NewUserPage = ( props ) => {
     const { data, session } = props;
     const [ userTopics, setUserTopics ] = useState( [] );
-
 
     useEffect( ( ) => {
         const options = { decrypt: false }
