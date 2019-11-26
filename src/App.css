@@ -23,6 +23,7 @@ time, mark, audio, video, input {
 	font-size: 11px; /* originally 1rem */
 	font-family: 'Oxygen', sans-serif;
 	vertical-align: baseline;
+	font-weight: 900;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 

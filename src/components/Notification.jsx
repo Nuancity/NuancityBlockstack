@@ -17,6 +17,8 @@ const Notification = ( props ) => {
         border-bottom: solid #4c8893 1px;
     }`
 
+
+
     return (
         <Notification>
             <p>
